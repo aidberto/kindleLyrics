@@ -8,7 +8,7 @@ The script polls the Spotify API for the currently playing track, fetches time-s
 
 ### Kindle side
 
-- A **jailbroken Kindle** — tested on Paperwhite 3 (PW3). The jailbreak enables SSH and custom software.
+- A **jailbroken Kindle** tested on Paperwhite 3 (PW3). The jailbreak enables SSH and custom software.
 - **[KOReader](https://github.com/koreader/koreader)** installed. KOReader ships `fbink` (used to write text to the e-ink display) and exposes an SSH server.
 - KOReader's **SSH plugin enabled** (Settings → Network → SSH server). Port is `2222` by default.
 - The Kindle and your computer on the **same network**.
@@ -18,10 +18,12 @@ The script polls the Spotify API for the currently playing track, fetches time-s
 ### Computer side
 
 - Python 3.10+
-- A **Spotify Developer app** — free, takes two minutes:
+- A **Spotify Developer app** free (must be premium member):
   1. Go to [developer.spotify.com/dashboard](https://developer.spotify.com/dashboard) and create an app.
   2. Set the redirect URI to `http://127.0.0.1:5000/callback`.
   3. Copy the **Client ID** and **Client Secret**.
+
+Spotify has limited users to one app each. If you already have an app, you can use it's cleint and secret for this, just make sure you add another redirect URI in the app settings.
 
 ## Installation
 
@@ -82,7 +84,7 @@ source .venv/bin/activate
 python kindle_lyrics.py
 ```
 
-The first run opens a browser for Spotify OAuth — log in and approve access. After that the token is cached.
+The first run opens a browser for Spotify OAuth log in and approve access. After that the token is cached.
 
 **Tap anywhere on the Kindle screen to exit.** The script restores the screen to whatever KOReader was showing before.
 
