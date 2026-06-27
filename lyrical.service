@@ -1,0 +1,15 @@
+[Unit]
+Description=Kindle Lyrics — display Spotify lyrics on a Kindle via SSH
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/lyrical
+ExecStart=%h/lyrical/.venv/bin/python %h/lyrical/kindle_lyrics.py
+# Restart on crash but NOT on a clean exit (e.g. tap-to-exit on the Kindle).
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
