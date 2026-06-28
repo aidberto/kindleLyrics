@@ -1,4 +1,4 @@
-# lyrical
+# Kindle Lyrics
 
 Display real-time Spotify lyrics on a Kindle e-ink screen via SSH and [fbink](https://github.com/NiLuJe/FBInk).
 
@@ -13,7 +13,7 @@ The script polls the Spotify API for the currently playing track, fetches time-s
 - KOReader's **SSH plugin enabled** (Settings → Network → SSH server). Port is `2222` by default.
 - The Kindle and your computer on the **same network**.
 
-> If you haven't jailbroken your Kindle yet, see [the MobileRead wiki](https://wiki.mobileread.com/wiki/Kindle_Hacks_Information) for device-specific guides.
+> If you haven't jailbroken your Kindle yet, see [the MobileRead wiki](https://wiki.mobileread.com/wiki/Kindle_Hacks_Information) for device specific guides.
 
 ### Computer side
 
@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ## SSH key setup
 
-lyrical uses key-based SSH (no password prompts). With your Kindle connected via USB:
+Kindle Lyrics uses key-based SSH (no password prompts). With your Kindle connected via USB:
 
 ```bash
 ./setup-ssh-key.sh
@@ -123,12 +123,14 @@ Runs the LRC parser, lyric-timing logic, fbink command builder, and touch-event 
 
 ## Troubleshooting
 
-**Lyrics lag or jump ahead** — tune `LYRIC_OFFSET_S` in `.env`. Increase if lyrics appear too late, decrease if too early.
+**Lyrics lag or jump ahead**  tune `LYRIC_OFFSET_S` in `.env`. Increase if lyrics appear too late, decrease if too early.
 
-**Wrong screen orientation** — try `KINDLE_ROTA=1` then `3` if text is upside-down.
+**Wrong screen orientation**  try `KINDLE_ROTA=1` then `3` if text is upside-down.
 
-**Touch tap doesn't exit** — check `KINDLE_TOUCH_EVENT`. Run `ls /dev/input` via SSH on the Kindle and try `event0` or `event2`.
+**Touch tap doesn't exit**  check `KINDLE_TOUCH_EVENT`. Run `ls /dev/input` via SSH on the Kindle and try `event0` or `event2`.
 
-**SSH connection refused** — make sure the KOReader SSH plugin is running (toggle it off and on in KOReader settings). Verify the Kindle IP and that port 2222 is reachable (`ssh -p 2222 root@<KINDLE_IP>`).
+**SSH connection refused**   make sure the KOReader SSH plugin is running (toggle it off and on in KOReader settings). Verify the Kindle IP and that port 2222 is reachable (`ssh -p 2222 root@<KINDLE_IP>`).
 
-**`KINDLE_KEY` not found** — re-run `./setup-ssh-key.sh`, or set `KINDLE_KEY` in `.env` to the correct path of your private key.
+**`KINDLE_KEY` not found**   re-run `./setup-ssh-key.sh`, or set `KINDLE_KEY` in `.env` to the correct path of your private key.
+
+**NOTE** You should reserve the IP of the kindle in your router's admin panel so that the kindle always has the same IP. If the Kindle's IP changes, just change the .env file to suit it.
