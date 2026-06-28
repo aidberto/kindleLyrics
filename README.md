@@ -43,7 +43,7 @@ Kindle Lyrics uses key-based SSH (no password prompts). With your Kindle connect
 ./setup-ssh-key.sh
 ```
 
-This generates `~/.ssh/kindle_lyrical` and installs the public key into KOReader's authorized keys on the Kindle. After that, USB is no longer needed.
+This generates `~/.ssh/kindle_lyrical` and installs the public key into KOReader's authorised keys on the Kindle. After that, USB is no longer needed.
 
 If your Kindle mounts somewhere other than `/media/$USER/Kindle`, pass the path:
 
